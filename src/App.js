@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 
+import FirstCity from "./FirstCity";
 function App() {
-	return <div className="App"></div>;
+	return <FirstCity />;
 }
-
 export default App;
