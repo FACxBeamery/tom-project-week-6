@@ -1,25 +1,16 @@
 import React from "react";
-
-const CityForm = ({ city, setStage, setCity, badRequest }) => {
+import main from "./css/main.module.css";
+const CityForm = ({ city, setCity, setStage }) => {
 	const handleSubmission = (event) => {
-		if (event && !badRequest) {
+		if (event) {
 			event.preventDefault();
 			setStage((stage) => stage + 1);
-		} else if (event) {
-			event.preventDefault();
 		}
 	};
 
 	const handleInput = (event) => {
 		setCity(event.target.value);
 	};
-
-	if (badRequest) {
-		alert(
-			"We couldn't find that city. Please ensure your spelling is correct!"
-		);
-	}
-
 	return (
 		<form onSubmit={handleSubmission}>
 			<input
@@ -29,7 +20,9 @@ const CityForm = ({ city, setStage, setCity, badRequest }) => {
 				onChange={handleInput}
 				required
 			></input>
-			<button type="submit">Go!</button>
+			<button className={main.button} type="submit">
+				Go!
+			</button>
 		</form>
 	);
 };

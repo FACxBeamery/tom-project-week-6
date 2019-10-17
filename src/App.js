@@ -5,6 +5,7 @@ import { getWeather, checkResponse } from "./getWeather.js";
 import FirstCity from "./FirstCity";
 import SecondCity from "./SecondCity";
 import IntroPage from "./IntroPage";
+import FinalCity from "./FinalCity";
 import ResultsPage from "./ResultsPage";
 
 //TODO
@@ -16,33 +17,35 @@ import ResultsPage from "./ResultsPage";
 
 const App = () => {
 	// react state variables
-	const [score, setScore] = React.useState(10);
+	const [score, setScore] = React.useState(30);
 	const [stage, setStage] = React.useState(0);
-	const [city, setCity] = React.useState(undefined);
-	const [temp, setTemp] = React.useState(undefined);
+	const [city, setCity] = React.useState("London");
+	const [temp, setTemp] = React.useState(20);
+	const [tempTest, setTempTest] = React.useState(undefined);
 
-	// changes city as it's typed in
+	const handleTemp = (data) => {
+		setTemp(data.main.temp - 273.3); // K -> C
+	};
 
-	// const handleTemp = (data) => {
-	// 	setTemp(data.main.temp - 273.3); // K -> C
-	// };
+	const handleScore = (temperature) => {
+		setScore((sc) => sc + (temperature - 10));
+	};
 
-	// const handleScore = (temperature) => {
-	// 	setScore((sc) => sc + (temperature - 10));
-	// };
-
-	// sets Temp, new score and moves  stage on
-	// const submit = (city) => {
-	// 	getWeather(city)
-	// 		.then(checkResponse)
-	// 		.then(handleTemp)
-	// 		.then((res) => handleScore(temp))
-	// 		.then(handleStage)
-	// 		.catch((err) => {
-	// 			throw new Error(`Failed to get weather data ${err}`);
-	// 		});
-	// };
-
+	React.useEffect(() => {
+		getWeather(city)
+			.then(checkResponse)
+			.then((data) => {
+				setTemp(data.main.temp - 273.3);
+				setScore(
+					(score) =>
+						Number(score) + (Number(data.main.temp) - 273.3 - 20)
+				);
+				setTempTest(Number(data.main.temp));
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, [stage]);
 	return (
 		<>
 			{(stage === 0 && <IntroPage setStage={setStage} />) ||
@@ -64,10 +67,18 @@ const App = () => {
 						setCity={setCity}
 						setStage={setStage}
 						stage={stage}
+						tempTest={tempTest}
 					/>
 				)) ||
 				(stage === 5 && (
-					<ResultsPage score={score} city={city} temp={temp} />
+					<FinalCity city={city} temp={temp} setStage={setStage} />
+				)) ||
+				(stage === 6 && (
+					<ResultsPage
+						score={score}
+						setStage={setStage}
+						setScore={setScore}
+					/>
 				))}
 		</>
 	);
