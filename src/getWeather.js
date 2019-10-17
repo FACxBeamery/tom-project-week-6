@@ -2,10 +2,7 @@ import API_KEY from "./key";
 
 const checkResponse = (response) => {
 	if (response.status !== 200) {
-		console.log(
-			`Error with the request! The error code is ${response.status}`
-		);
-		return;
+		return response.status;
 	}
 	return response.json();
 };

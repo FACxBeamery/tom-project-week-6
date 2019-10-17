@@ -1,11 +1,8 @@
 import React from "react";
 
-const CityForm = ({ city, setStage, setCity, badRequest }) => {
+const ResubmitForm = () => {
 	const handleSubmission = (event) => {
-		if (event && !badRequest) {
-			event.preventDefault();
-			setStage((stage) => stage + 1);
-		} else if (event) {
+		if (event) {
 			event.preventDefault();
 		}
 	};
@@ -13,13 +10,6 @@ const CityForm = ({ city, setStage, setCity, badRequest }) => {
 	const handleInput = (event) => {
 		setCity(event.target.value);
 	};
-
-	if (badRequest) {
-		alert(
-			"We couldn't find that city. Please ensure your spelling is correct!"
-		);
-	}
-
 	return (
 		<form onSubmit={handleSubmission}>
 			<input
@@ -33,5 +23,3 @@ const CityForm = ({ city, setStage, setCity, badRequest }) => {
 		</form>
 	);
 };
-
-export default CityForm;
