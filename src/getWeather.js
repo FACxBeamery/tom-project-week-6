@@ -1,4 +1,4 @@
-API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY;
 const checkResponse = (response) => {
 	if (response.status !== 200) {
 		return response.status;
