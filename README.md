@@ -1,3 +1,8 @@
+## Welcome to my Week 6 Project!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ba3f81dd-8607-4912-843a-1f04c5520664/deploy-status)](https://app.netlify.com/sites/tanning-game/deploys)
+
+This app calls an API, so after cloning the repo you will need to modify line 9 of src/utils/getWeather.js. Replace `process.env.API_KEY` with a new API key for the app (making sure you wrap it in quotes). If you're part of FAC or Beamery, check the Slack Channel for an API key. Otherwise, sign up for a new key at https://openweathermap.org/appid. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -16,16 +21,6 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
 
