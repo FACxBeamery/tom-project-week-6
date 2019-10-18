@@ -1,13 +1,15 @@
 import React from "react";
-import "./App.css";
-import { getWeather, checkResponse } from "./getWeather.js";
+import "./css/App.css";
+import { getWeather, checkResponse } from "./utils/getWeather.js";
 
-import FirstCity from "./FirstCity";
-import SecondCity from "./SecondCity";
-import IntroPage from "./IntroPage";
-import FinalCity from "./FinalCity";
-import ResultsPage from "./ResultsPage";
+import FirstCity from "./pages/FirstCity";
+import SecondCity from "./pages/SecondCity";
+import IntroPage from "./pages/IntroPage";
+import FinalCity from "./pages/FinalCity";
+import ResultsPage from "./pages/ResultsPage";
+const dotenv = require("dotenv");
 
+dotenv.config();
 //TODO
 // * score is one behind what it should be.
 // * React.useEffect()???

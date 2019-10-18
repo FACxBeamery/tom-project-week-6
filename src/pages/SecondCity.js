@@ -1,8 +1,7 @@
 import React from "react";
-import CityForm from "./CityForm";
-import main from "./css/main.module.css";
+import CityForm from "./CityForm.js";
+import main from "../css/main.module.css";
 
-import { getWeather, checkResponse } from "./getWeather";
 const SecondCity = ({
 	score,
 	temp,

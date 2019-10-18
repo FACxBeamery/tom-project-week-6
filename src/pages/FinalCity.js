@@ -1,5 +1,5 @@
 import React from "react";
-import main from "./css/main.module.css";
+import main from "../css/main.module.css";
 
 const FinalCity = ({ city, temp, setStage }) => {
 	const handleStage = () => {

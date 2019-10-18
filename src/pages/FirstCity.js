@@ -1,6 +1,6 @@
 import React from "react";
 import CityForm from "./CityForm";
-import main from "./css/main.module.css";
+import main from "../css/main.module.css";
 
 const FirstCity = ({ city, setStage, setCity }) => {
 	return (

@@ -1,5 +1,5 @@
 import React from "react";
-import main from "./css/main.module.css";
+import main from "../css/main.module.css";
 const CityForm = ({ city, setCity, setStage }) => {
 	const handleSubmission = (event) => {
 		if (event) {
