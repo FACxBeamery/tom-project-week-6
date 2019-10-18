@@ -10,12 +10,27 @@ const ResultsPage = ({ score, setStage, setScore }) => {
 
 			{score > 30 ? (
 				score > 50 ? (
-					<p>You burnt yourself you silly goose! 😫</p>
+					<p>
+						You burnt yourself you silly goose!{" "}
+						<span role="img" aria-label="despair emoji">
+							😫
+						</span>
+					</p>
 				) : (
-					<p>You got a good tan! 😎</p>
+					<p>
+						You got a good tan!{" "}
+						<span role="img" aria-label="cool emoji">
+							😎
+						</span>
+					</p>
 				)
 			) : (
-				<p>You need some Vitamin D stat 💊</p>
+				<p>
+					You need some Vitamin D stat
+					<span role="img" aria-label="pill emoji">
+						💊
+					</span>{" "}
+				</p>
 			)}
 			<button
 				className={main.button}
