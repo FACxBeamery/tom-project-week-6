@@ -19,47 +19,40 @@ const App = () => {
 	// react state variables
 	const [score, setScore] = React.useState(30);
 	const [stage, setStage] = React.useState(0);
-	const [city, setCity] = React.useState("London");
-	const [temp, setTemp] = React.useState(20);
+	const [city, setCity] = React.useState("");
+	const [temp, setTemp] = React.useState(0);
 	const [tempTest, setTempTest] = React.useState(undefined);
 	const [requestLogger, setRequestLogger] = React.useState(0);
 
-	const handleTemp = (data) => {
-		setTemp(data.main.temp - 273.3); // K -> C
-	};
-
-	const handleScore = (temperature) => {
-		setScore((sc) => sc + (temperature - 10));
-	};
-
 	React.useEffect(() => {
-		getWeather(city)
-			.then(checkResponse)
-			.then((data) => {
-				if (data === 404) {
-					alert(
-						"404: Please make sure the city is spelled correctly!"
-					);
-				} else {
-					setTemp(data.main.temp - 273.3);
-					setScore(
-						(score) =>
-							Number(score) +
-							(Number(data.main.temp) - 273.3 - 20)
-					);
-					setTempTest(Number(data.main.temp));
-					setStage((stage) => stage + 1);
-				}
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		if (stage !== 0) {
+			getWeather(city)
+				.then(checkResponse)
+				.then((data) => {
+					if (data === 404) {
+						alert(
+							"404: Please make sure the city is spelled correctly!"
+						);
+					} else {
+						setTemp(data.main.temp - 273.3);
+						setScore(
+							(score) =>
+								Number(score) +
+								(Number(data.main.temp) - 273.3 - 20)
+						);
+						setTempTest(Number(data.main.temp));
+						setStage((stage) => stage + 1);
+					}
+				})
+				.catch((err) => {
+					console.error(err);
+				});
+		}
 	}, [requestLogger]);
+
 	return (
 		<>
-			{(stage === 0 && (
-				<IntroPage setRequestLogger={setRequestLogger} />
-			)) ||
+			{(stage === 0 && <IntroPage setStage={setStage} />) ||
 				(stage === 1 && (
 					<FirstCity
 						city={city}

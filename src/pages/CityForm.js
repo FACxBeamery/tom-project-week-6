@@ -1,22 +1,26 @@
 import React from "react";
 import main from "../css/main.module.css";
 const CityForm = ({ city, setCity, setRequestLogger }) => {
+	let formValue = "";
 	const handleSubmission = (event) => {
 		if (event) {
 			event.preventDefault();
+			formValue = "";
 			setRequestLogger((requestLogger) => requestLogger + 1);
 		}
 	};
 
 	const handleInput = (event) => {
-		setCity(event.target.value);
+		formValue = event.target.value;
+		setCity(formValue);
 	};
+
 	return (
 		<form onSubmit={handleSubmission}>
 			<input
 				type="text"
 				placeholder="Enter city here"
-				defaultValue=""
+				defaultValue={formValue}
 				onChange={handleInput}
 				required
 			></input>
