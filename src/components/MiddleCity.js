@@ -2,16 +2,15 @@ import React from "react";
 import CityForm from "./CityForm.js";
 import main from "../css/main.module.css";
 
-const SecondCity = ({
+const MiddleCity = ({
 	score,
 	temp,
 	city,
-	setTemp,
-	setScore,
 	setCity,
 	setRequestLogger,
 	stage,
-	tempTest
+	formValue,
+	setFormValue
 }) => {
 	return (
 		<div className={main.slide}>
@@ -23,11 +22,13 @@ const SecondCity = ({
 			<p> What's your next destination? Enter it here:</p>
 			<CityForm
 				city={city}
-				setCity={setCity}
 				setRequestLogger={setRequestLogger}
+				setCity={setCity}
+				formValue={formValue}
+				setFormValue={setFormValue}
 			/>
 		</div>
 	);
 };
 
-export default SecondCity;
+export default MiddleCity;

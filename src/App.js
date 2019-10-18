@@ -1,12 +1,12 @@
 import React from "react";
 import "./css/App.css";
-import { getWeather, checkResponse } from "./utils/getWeather.js";
+import getWeather from "./utils/getWeather.js";
 
-import FirstCity from "./pages/FirstCity";
-import SecondCity from "./pages/SecondCity";
-import IntroPage from "./pages/IntroPage";
-import FinalCity from "./pages/FinalCity";
-import ResultsPage from "./pages/ResultsPage";
+import FirstCity from "./components/FirstCity";
+import MiddleCity from "./components/MiddleCity";
+import IntroPage from "./components/IntroPage";
+import FinalCity from "./components/FinalCity";
+import ResultsPage from "./components/ResultsPage";
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -21,13 +21,12 @@ const App = () => {
 	const [stage, setStage] = React.useState(0);
 	const [city, setCity] = React.useState("");
 	const [temp, setTemp] = React.useState(0);
-	const [tempTest, setTempTest] = React.useState(undefined);
 	const [requestLogger, setRequestLogger] = React.useState(0);
+	const [formValue, setFormValue] = React.useState("");
 
 	React.useEffect(() => {
 		if (stage !== 0) {
 			getWeather(city)
-				.then(checkResponse)
 				.then((data) => {
 					if (data === 404) {
 						alert(
@@ -40,7 +39,7 @@ const App = () => {
 								Number(score) +
 								(Number(data.main.temp) - 273.3 - 20)
 						);
-						setTempTest(Number(data.main.temp));
+						setFormValue("");
 						setStage((stage) => stage + 1);
 					}
 				})
@@ -59,19 +58,20 @@ const App = () => {
 						score={score}
 						setCity={setCity}
 						setRequestLogger={setRequestLogger}
+						formValue={formValue}
+						setFormValue={setFormValue}
 					/>
 				)) ||
 				([2, 3, 4].includes(stage) && (
-					<SecondCity
+					<MiddleCity
 						score={score}
 						temp={temp}
 						city={city}
-						setScore={setScore}
-						setTemp={setTemp}
 						setCity={setCity}
 						setRequestLogger={setRequestLogger}
 						stage={stage}
-						tempTest={tempTest}
+						formValue={formValue}
+						setFormValue={setFormValue}
 					/>
 				)) ||
 				(stage === 5 && (

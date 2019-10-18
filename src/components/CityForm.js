@@ -1,8 +1,6 @@
 import React from "react";
 import main from "../css/main.module.css";
-const CityForm = ({ city, setCity, setRequestLogger }) => {
-	const [formValue, setFormValue] = React.useState("");
-
+const CityForm = ({ setCity, setRequestLogger, formValue, setFormValue }) => {
 	const handleFormValue = (event) => {
 		setFormValue(event.target.value);
 	};
@@ -12,12 +10,6 @@ const CityForm = ({ city, setCity, setRequestLogger }) => {
 			setCity(formValue);
 			setRequestLogger((requestLogger) => requestLogger + 1);
 		}
-	};
-
-	const handleInput = (event) => {
-		formValue = event.target.value;
-		console.log("form value: ", formValue);
-		setCity(formValue);
 	};
 
 	return (
