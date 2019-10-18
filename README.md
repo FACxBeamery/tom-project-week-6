@@ -1,4 +1,5 @@
 ## Welcome to my Week 6 Project!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ba3f81dd-8607-4912-843a-1f04c5520664/deploy-status)](https://app.netlify.com/sites/tanning-game/deploys)
 This app calls an API, so after cloning the repo you will need to modify line 9 of src/utils/getWeather.js. Replace `process.env.API_KEY` with a new API key for the app (making sure you wrap it in quotes). If you're part of FAC or Beamery, check the Slack Channel for an API key. Otherwise, sign up for a new key at https://openweathermap.org/appid. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
