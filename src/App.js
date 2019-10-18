@@ -11,10 +11,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 //TODO
-// * score is one behind what it should be.
-// * React.useEffect()???
-// * Make it pretty - animations!
-// * Form validation
+
+// * Make it pretty
 // * Accessibility
 
 const App = () => {
@@ -24,6 +22,7 @@ const App = () => {
 	const [city, setCity] = React.useState("London");
 	const [temp, setTemp] = React.useState(20);
 	const [tempTest, setTempTest] = React.useState(undefined);
+	const [requestLogger, setRequestLogger] = React.useState(0);
 
 	const handleTemp = (data) => {
 		setTemp(data.main.temp - 273.3); // K -> C
@@ -37,26 +36,36 @@ const App = () => {
 		getWeather(city)
 			.then(checkResponse)
 			.then((data) => {
-				setTemp(data.main.temp - 273.3);
-				setScore(
-					(score) =>
-						Number(score) + (Number(data.main.temp) - 273.3 - 20)
-				);
-				setTempTest(Number(data.main.temp));
+				if (data === 404) {
+					alert(
+						"404: Please make sure the city is spelled correctly!"
+					);
+				} else {
+					setTemp(data.main.temp - 273.3);
+					setScore(
+						(score) =>
+							Number(score) +
+							(Number(data.main.temp) - 273.3 - 20)
+					);
+					setTempTest(Number(data.main.temp));
+					setStage((stage) => stage + 1);
+				}
 			})
 			.catch((err) => {
 				console.error(err);
 			});
-	}, [stage]);
+	}, [requestLogger]);
 	return (
 		<>
-			{(stage === 0 && <IntroPage setStage={setStage} />) ||
+			{(stage === 0 && (
+				<IntroPage setRequestLogger={setRequestLogger} />
+			)) ||
 				(stage === 1 && (
 					<FirstCity
 						city={city}
 						score={score}
 						setCity={setCity}
-						setStage={setStage}
+						setRequestLogger={setRequestLogger}
 					/>
 				)) ||
 				([2, 3, 4].includes(stage) && (
@@ -67,13 +76,17 @@ const App = () => {
 						setScore={setScore}
 						setTemp={setTemp}
 						setCity={setCity}
-						setStage={setStage}
+						setRequestLogger={setRequestLogger}
 						stage={stage}
 						tempTest={tempTest}
 					/>
 				)) ||
 				(stage === 5 && (
-					<FinalCity city={city} temp={temp} setStage={setStage} />
+					<FinalCity
+						city={city}
+						temp={temp}
+						setRequestLogger={setRequestLogger}
+					/>
 				)) ||
 				(stage === 6 && (
 					<ResultsPage

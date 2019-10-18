@@ -9,7 +9,7 @@ const SecondCity = ({
 	setTemp,
 	setScore,
 	setCity,
-	setStage,
+	setRequestLogger,
 	stage,
 	tempTest
 }) => {
@@ -21,7 +21,11 @@ const SecondCity = ({
 				score so far is {Number(score).toFixed()}.
 			</p>
 			<p> What's your next destination? Enter it here:</p>
-			<CityForm city={city} setCity={setCity} setStage={setStage} />
+			<CityForm
+				city={city}
+				setCity={setCity}
+				setRequestLogger={setRequestLogger}
+			/>
 		</div>
 	);
 };

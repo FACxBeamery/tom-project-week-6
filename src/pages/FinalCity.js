@@ -1,9 +1,9 @@
 import React from "react";
 import main from "../css/main.module.css";
 
-const FinalCity = ({ city, temp, setStage }) => {
-	const handleStage = () => {
-		setStage((stage) => stage + 1);
+const FinalCity = ({ city, temp, setRequestLogger }) => {
+	const handleRequestLogger = () => {
+		setRequestLogger((requestLogger) => requestLogger + 1);
 	};
 
 	return (
@@ -12,7 +12,7 @@ const FinalCity = ({ city, temp, setStage }) => {
 				The temperature of {city} is {Number(temp).toFixed()} C. Click
 				the button to see your final score!
 			</p>
-			<button className={main.button} onClick={handleStage}>
+			<button className={main.button} onClick={handleRequestLogger}>
 				Go!
 			</button>
 		</div>

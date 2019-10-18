@@ -1,10 +1,10 @@
 import React from "react";
 import main from "../css/main.module.css";
-const CityForm = ({ city, setCity, setStage }) => {
+const CityForm = ({ city, setCity, setRequestLogger }) => {
 	const handleSubmission = (event) => {
 		if (event) {
 			event.preventDefault();
-			setStage((stage) => stage + 1);
+			setRequestLogger((requestLogger) => requestLogger + 1);
 		}
 	};
 
