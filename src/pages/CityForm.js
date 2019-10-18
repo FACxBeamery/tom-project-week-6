@@ -16,7 +16,7 @@ const CityForm = ({ city, setCity, setStage }) => {
 			<input
 				type="text"
 				placeholder="Enter city here"
-				defaultValue={city}
+				defaultValue=""
 				onChange={handleInput}
 				required
 			></input>

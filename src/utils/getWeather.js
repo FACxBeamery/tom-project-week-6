@@ -8,7 +8,7 @@ const checkResponse = (response) => {
 const getWeather = (city) => {
 	const API_KEY = process.env.REACT_APP_API_KEY;
 	return fetch(
-		`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`
+		`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`
 	);
 };
 export { getWeather, checkResponse };
