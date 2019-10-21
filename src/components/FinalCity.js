@@ -1,8 +1,9 @@
 import React from "react";
 import main from "../css/main.module.css";
 
-const FinalCity = ({ city, temp, setRequestLogger }) => {
+const FinalCity = ({ city, temp, setRequestLogger, setFormValue }) => {
 	const handleRequestLogger = () => {
+		setFormValue(city);
 		setRequestLogger((requestLogger) => requestLogger + 1);
 	};
 

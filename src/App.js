@@ -26,17 +26,18 @@ const App = () => {
 
 	React.useEffect(() => {
 		if (stage !== 0) {
-			getWeather(city)
+			getWeather(formValue)
 				.then((data) => {
 					if (data === 404) {
 						alert(
-							"404: Please make sure the city is spelled correctly!"
+							`404: We couldn't find the city "${formValue}". Please make sure it's spelled correctly!`
 						);
 					} else if (Number.isInteger(data)) {
 						alert(
 							`Sorry, there is an error. The error code is ${data}.`
 						);
 					} else {
+						setCity(formValue);
 						setTemp(data.main.temp - 273.3);
 						setScore(
 							(score) =>
@@ -83,6 +84,7 @@ const App = () => {
 						city={city}
 						temp={temp}
 						setRequestLogger={setRequestLogger}
+						setFormValue={setFormValue}
 					/>
 				)) ||
 				(stage === 6 && (

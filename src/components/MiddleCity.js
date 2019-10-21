@@ -14,7 +14,12 @@ const MiddleCity = ({
 }) => {
 	return (
 		<div className={main.slide}>
-			<h1>Stage {stage} page</h1>
+			<h1>
+				{" "}
+				{`You have ${5 - stage} trip` +
+					`${stage === 4 ? "" : "s"}`}{" "}
+				left!
+			</h1>
 			<p>
 				The temperature of {city} is {temp.toFixed(1)}&#176;C. Your
 				total score so far is {Number(score).toFixed()}.
