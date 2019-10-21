@@ -11,7 +11,7 @@ const FirstCity = ({
 }) => {
 	return (
 		<div className={main.slide}>
-			<h1>Enter your first city in the form below</h1>
+			<h1>Where do you want to fly to first?</h1>
 			<CityForm
 				city={city}
 				setRequestLogger={setRequestLogger}

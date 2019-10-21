@@ -32,6 +32,10 @@ const App = () => {
 						alert(
 							"404: Please make sure the city is spelled correctly!"
 						);
+					} else if (Number.isInteger(data)) {
+						alert(
+							`Sorry, there is an error. The error code is ${data}.`
+						);
 					} else {
 						setTemp(data.main.temp - 273.3);
 						setScore(

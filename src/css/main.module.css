@@ -2,8 +2,8 @@
 	border-radius: 2rem;
 	background-color: rgb(130, 223, 130);
 	color: rgb(94, 55, 55);
-	width: 80vw;
-	height: 80vw;
+	width: 70vw;
+	height: 70vh;
 	text-align: center;
 	padding: 2rem;
 	margin: 2rem auto;
@@ -14,17 +14,18 @@
 }
 
 .button {
-	padding: 0.35rem 1.2rem;
-	width: 20vw;
+	padding: 0.5rem;
+	width: 30vw;
 	border: 0.1em solid #e8e8e8;
 	border-radius: 0.12em;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: "Roboto", sans-serif;
+	font-family: "Courier", "Roboto", sans-serif;
 	font-weight: 30;
 	color: rgb(94, 55, 55);
 	text-align: center;
 	transition: all 0.2s;
+	font-size: 1rem;
 }
 
 .button:hover {
@@ -35,16 +36,31 @@
 
 input[type="text"],
 select {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
+	width: 80%;
+	padding: 1rem;
+	margin: 2rem 0;
 	display: inline-block;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+	font-size: 2rem;
+	font-family: "Courier";
 }
 
 .introtext {
 	margin: 5rem;
-	width: 50vw;
+	width: 80%;
+}
+
+@media only screen and (min-width: 800px) {
+	.slide {
+		width: 560px;
+		height: 560px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.slide {
+		height: 560px;
+	}
 }

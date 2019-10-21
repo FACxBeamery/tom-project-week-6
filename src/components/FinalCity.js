@@ -9,8 +9,8 @@ const FinalCity = ({ city, temp, setRequestLogger }) => {
 	return (
 		<div className={main.slide}>
 			<p>
-				The temperature of {city} is {Number(temp).toFixed()} C. Click
-				the button to see your final score!
+				The temperature of {city} is {Number(temp).toFixed()} &#176;C.
+				Click the button to see your final score!
 			</p>
 			<button className={main.button} onClick={handleRequestLogger}>
 				Go!

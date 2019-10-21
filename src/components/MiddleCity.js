@@ -16,8 +16,8 @@ const MiddleCity = ({
 		<div className={main.slide}>
 			<h1>Stage {stage} page</h1>
 			<p>
-				The temperature of {city} is {temp.toFixed(1)} C. Your total
-				score so far is {Number(score).toFixed()}.
+				The temperature of {city} is {temp.toFixed(1)}&#176;C. Your
+				total score so far is {Number(score).toFixed()}.
 			</p>
 			<p> What's your next destination? Enter it here:</p>
 			<CityForm
